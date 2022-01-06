@@ -53,6 +53,13 @@ http {
         # gzip_http_version 1.1;
         gzip_types {{ nginx_gzip_types }};
 
+        ##
+        # Fastcgi_cache settings
+        ##
+
+        fastcgi_cache_path /usr/share/nginx/fastcgi_cache levels=1:2 keys_zone=phpcache:100m max_size=10g inactive=60m use_temp_path=off;
+        fastcgi_cache_key "$scheme$request_method$host$request_uri";
+
 {% if nginx_page_caching_enabled == "true" %}
         ##
         # Cache Settings
