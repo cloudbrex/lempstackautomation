@@ -50,6 +50,9 @@ server {
         fastcgi_no_cache $skip_cache;
         fastcgi_cache {{ wordpress_hostname }};
         fastcgi_cache_valid {{ wordpress_nginx_page_cache_duration }};
+        fastcgi_cache_use_stale error timeout updating invalid_header http_500 http_503;
+        fastcgi_cache_min_uses 1;
+        fastcgi_cache_lock on;
 {% endif %}
         include fastcgi_params;
     }

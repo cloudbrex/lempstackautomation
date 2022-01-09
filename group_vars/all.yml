@@ -73,6 +73,6 @@ wordpress_plugins:
 # wordpress_database_export: export.sql
 
 # Whether to enable nginx page caching
-nginx_page_caching_enabled: false
+nginx_page_caching_enabled: "true"
 
 customer_email: build@vpsnest.com
