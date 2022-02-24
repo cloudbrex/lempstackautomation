@@ -81,6 +81,7 @@
     src: /etc/nginx/sites-available/{{ wordpress_hostname }}_80
     dest: /etc/nginx/sites-enabled/{{ wordpress_hostname }}
     state: link
+    force: yes
   when: certbot.stat.exists == false
   notify: Reload Nginx
   tags: [ wordpress ]
@@ -90,6 +91,7 @@
     src: /etc/nginx/sites-available/{{ wordpress_hostname }}_443
     dest: /etc/nginx/sites-enabled/{{ wordpress_hostname }}
     state: link
+    force: yes
   when: certbot.stat.exists == true
   notify: Reload Nginx
   tags: [ wordpress ]
